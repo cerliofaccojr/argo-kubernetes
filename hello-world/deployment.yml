@@ -18,6 +18,6 @@ spec:
       - name: hello-world
         image: hashicorp/http-echo:latest
         args:
-          - "-text=Hello from NGINX Ingress!"
+          - "-text=Hello from NGINX Ingress Cerlio!"
         ports:
         - containerPort: 5678
