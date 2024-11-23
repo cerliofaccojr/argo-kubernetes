@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/cerliofaccojr/kubernetes-argocd
+    repoURL: git@github.com:cerliofaccojr/argo-kubernetes.git
     targetRevision: HEAD
     path: example
   destination:
