@@ -1,12 +1,26 @@
-apiVersion: v1
-kind: Service
+apiVersion: networking.k8s.io/v1
+kind: Ingress
 metadata:
-  name: demo-app
+  name: hello-world-ingress
+  namespace: default
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
-  selector:
-    app: demo-app
-  ports:
-  - protocol: TCP
-    port: 80
-    targetPort: 8080
-  type: ClusterIP
+  ingressClassName: nginx # Specify the IngressClassName here
+  rules:
+  - http:
+      paths:
+      - path: /hello-world
+        pathType: Prefix
+        backend:
+          service:
+            name: hello-world
+            port:
+              number: 80
+      - path: /demo-service
+        pathType: Prefix
+        backend:
+          service:
+            name: demo-app
+            port:
+              number: 80
