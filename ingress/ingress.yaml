@@ -6,21 +6,15 @@ metadata:
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
+  ingressClassName: nginx
   rules:
   - host: localhost
     http:
       paths:
-      - path: /api/demoservice/
+      - path: /api/demoservice/(.*)
         pathType: Prefix
         backend:
           service:
             name: demo-app
-            port:
-              number: 80
-      - path: /guestbook/
-        pathType: Prefix
-        backend:
-          service:
-            name: guestbook
             port:
               number: 80
