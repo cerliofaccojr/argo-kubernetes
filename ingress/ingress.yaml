@@ -4,14 +4,14 @@ metadata:
   name: demo-ingress
   namespace: default
   annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/rewrite-target: /  # Ensures the path is rewritten if needed
 spec:
   ingressClassName: nginx
   rules:
-  - host: localhost
+  - host: localhost  # Replace with your domain if using one
     http:
       paths:
-      - path: /api/demoservice/(.*)
+      - path: /api/todo-types
         pathType: Prefix
         backend:
           service:
