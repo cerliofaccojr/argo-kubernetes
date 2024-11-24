@@ -4,9 +4,10 @@ metadata:
   name: ingress
   namespace: default
   annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/rewrite-target: /$2 # Adjusting rewrite behavior
+    nginx.ingress.kubernetes.io/use-regex: "true"   # Enables regex for paths
 spec:
-  ingressClassName: nginx # Specify the IngressClassName here
+  ingressClassName: nginx # Ensure this matches your NGINX Ingress class name
   rules:
   - http:
       paths:
@@ -17,8 +18,8 @@ spec:
             name: hello-world
             port:
               number: 80
-      - path: /demo-service
-        pathType: Prefix
+      - path: /demo-service(/|$)(.*)  # Regex for demo-service and sub-paths
+        pathType: ImplementationSpecific # Required for regex usage
         backend:
           service:
             name: demo-app
