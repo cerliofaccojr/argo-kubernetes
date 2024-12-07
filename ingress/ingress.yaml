@@ -18,7 +18,7 @@ spec:
             name: hello-world
             port:
               number: 80
-      - path: /java-app(/|$)(.*)  # Regex for demo-service and sub-paths
+      - path: /kotlin(/|$)(.*)  # Regex for demo-service and sub-paths
         pathType: ImplementationSpecific # Required for regex usage
         backend:
           service:
