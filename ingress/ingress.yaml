@@ -22,6 +22,6 @@ spec:
         pathType: ImplementationSpecific # Required for regex usage
         backend:
           service:
-            name: java-app
+            name: kotlin-app
             port:
               number: 80
